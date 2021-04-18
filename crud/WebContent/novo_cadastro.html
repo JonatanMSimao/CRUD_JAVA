@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Cadastro de Usuários</title>
+<link rel="icon" href="imagens/icontitleadd.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>Cadastrar Novo Usuário</h1>
+	<form name="forUser" action="insert">
+		<table>
+			<tr>
+				<td><input type="text" name="nome" placeholder="Nome"
+					class="box1"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="email" placeholder="Email"
+					class="box1"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="fone" placeholder="Fone"
+					class="box2"></td>
+			</tr>
+		</table>
+		<input type="button" class="btn1" value="Adicionar"
+			onclick="validar()">
+	</form>
+	<script src="scripts/validador.js"></script>
+</body>
+</html>
