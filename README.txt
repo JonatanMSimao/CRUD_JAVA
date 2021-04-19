@@ -2,9 +2,11 @@
 # Desenvolvido por : Jonatan Simão
 # Contato jonatanmarcel@gmail.com
 
-
+# Tecnologias Utilizadas #
 # CRUD criado na Linguagem Java
-# JSP e MySQL
+# JSP 
+# MySQL
+# Server TomCat
 
 */Script do Banco de Dados/*
 
