@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class DAO {
-	/** MÛdulo de conex„o **/
-	// Par‚metros de Conex„o
+	/** M√≥dulo de conex√£o **/
+	// Par√¢metros de Conex√£o
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://127.0.0.1:3306/dbcadastro?useTimezone=true&serverTimezone=UTC";
 	private String user = "root";
 	private String password = "root";
 
-	// MÈtodo de Conex„o
+	// M√©todo de Conex√£o
 	private Connection conectar() {
 		Connection con = null;
 		try {
@@ -27,28 +27,28 @@ public class DAO {
 		}
 	}
 
-	/** Crud Create **/
+	/** Create **/
 	public void inserirUsuario(JavaBeans usuario) {
 		String create = "insert into usuarios (nome,email,fone) values (?,?,?)";
 		try {
-			// abrir a conex„o
+			// abrir a conex√£o
 			Connection con = conectar();
-			// Preparar a query para execuÁ„o no banco de dados
+			// Preparar a query para execu√ß√£o no banco de dados
 			PreparedStatement pstm = con.prepareStatement(create);
-			// Substituir par‚mentros (?) pelo conte˙do das vari·veis JavaBeans
+			// Substituir par√¢mentros (?) pelo conte√∫do das vari√°veis JavaBeans
 			pstm.setString(1, usuario.getNome());
 			pstm.setString(2, usuario.getEmail());
 			pstm.setString(3, usuario.getFone());
 			// Executar a query
 			pstm.executeUpdate();
-			// Encerrar conex„o com o banco
+			// Encerrar conex√£o com o banco
 			con.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	/** Crud Read **/
+	/** Read **/
 	public ArrayList<JavaBeans> listarUsuarios() {
 		// criando objeto para acessar a classe JavaBeans
 		ArrayList<JavaBeans> usuario = new ArrayList<>();
@@ -57,9 +57,9 @@ public class DAO {
 			Connection con = conectar();
 			PreparedStatement pstm = con.prepareStatement(read);
 			ResultSet rs = pstm.executeQuery();
-			// o laÁo ser· executado enquanto houver usu·rios
+			// o la√ßo ser√° executado enquanto houver usu√°rios
 			while (rs.next()) {
-				// vari·veis que recebe os dados do banco
+				// vari√°veis que recebe os dados do banco
 				String id = rs.getString(1);
 				String nome = rs.getString(2);
 				String email = rs.getString(3);
@@ -76,8 +76,8 @@ public class DAO {
 		}
 	}
 
-	/** Crud Update **/
-	// selecionar o usu·rio
+	/** Update **/
+	// selecionar √∫nico usu√°rio
 	public void selecionarUsuario(JavaBeans usuario) {
 		String read2 = "select * from usuarios where id = ? ";
 		try {
@@ -86,7 +86,7 @@ public class DAO {
 			pstm.setString(1, usuario.getId());
 			ResultSet rs = pstm.executeQuery();
 			while (rs.next()) {
-				// setar vari·veis JavaBeans
+				// setar vari√°veis JavaBeans
 				usuario.setId(rs.getString(1));
 				usuario.setNome(rs.getString(2));
 				usuario.setEmail(rs.getString(3));
@@ -98,7 +98,7 @@ public class DAO {
 		}
 	}
 
-	// editar usu·rio
+	// editar usu√°rio
 	public void alterarUsuario(JavaBeans usuario) {
 		String update = "update usuarios set nome=?,email=?,fone=? where id=?";
 		try {
@@ -115,7 +115,7 @@ public class DAO {
 		}
 	}
 
-	/** Crud Delete **/
+	/** Delete **/
 
 	public void excluirUsuario(JavaBeans usuario) {
 		String delete = "delete from usuarios where id=?";
